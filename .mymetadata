@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="yonggui"
+  id="myeclipse.1477297295845"
+  context-root="/yonggui"
+  j2ee-spec="6.0"
+  archive="yonggui.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

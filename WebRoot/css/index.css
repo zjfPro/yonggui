@@ -1,0 +1,186 @@
+﻿.bitype
+{
+   height:90px; border:1px solid #f2f2f2;
+}
+.bcount
+{
+	font-size:28px; color:#4D4D4D;height:35px; line-height:35px;
+}
+.bicon
+{
+	 width:60px; height:60px; display:block; float:left; margin:15px 10px 0px 0px;
+}
+
+.bicon2
+{
+	background:url(../Images/ibg.png) 0 0 no-repeat; 
+}
+.bicon3
+{
+	background:url(../Images/ibg.png) -60px 0 no-repeat; 
+}
+.bicon4
+{
+	background:url(../Images/ibg.png) -120px 0 no-repeat; 
+}
+.bicon5
+{
+	background:url(../Images/ibg.png) -180px 0 no-repeat; 
+}
+.bicon6
+{
+	background:url(../Images/ibg.png) -240px 0 no-repeat;
+}
+.bicon7
+{
+	background:url(../Images/ibg.png) -300px 0 no-repeat; 
+}
+.bicon8
+{
+	background:url(../Images/ibg.png) -360px 0 no-repeat; 
+}
+.bicon9
+{
+	background:url(../Images/ibg.png) -420px 0 no-repeat; margin-top:15px;
+}
+.bitype h2
+{
+	  margin:0px; font-size:14px; height:25px; line-height:25px; color:#A4A4A4;
+} 
+.cyczf a
+{
+	font-weight:600; font-size:14px; 
+} 
+
+.infojt
+{
+	background:url(../Images/ibg.png) 0px -60px no-repeat; height:30px; width:30px; float:right; margin-top:30px;
+}
+.newslist
+{
+	margin:6px 0px 15px 18px; padding:0px; 
+	
+}
+.newslist li
+{
+	height:30px; line-height:30px;color:#666;
+}
+.newslist li a
+{
+	color:#666; font-size:14px;
+}
+.newslist li a:hover
+{
+	color:#2A6496
+}
+.nltime
+{
+	float:right; font-size:13px; color:#666;
+}
+
+
+.zcinfo
+{
+	font-size:22px; margin-top:28px; float:left; color:#ffffff;
+}
+
+.zcbg{
+	background-color:#1ED8BE;
+}
+.zcdetails{
+	float:left; margin-top:15px;
+
+}
+
+.newmore
+{
+	font-size:14px; float:right; height:30px; line-height:30px; margin-bottom:10px;
+}
+
+/* 瓒呭皬灞忓箷锛堝皬浜� 768px锛� */
+@media (max-width: 768px) {
+	.infofont
+{
+	height:120px; border-bottom:1px solid #ddd; text-align:left;
+}
+	.infofont h2
+{
+	font-size:12px; line-height:20px; margin-left:10px; height:25px;
+}
+.infofont h2 span
+{
+	font-size:20px;  
+}
+.sxmt20
+{
+	margin-top:40px;
+}
+
+}
+/* 灏忓睆骞曪紙骞虫澘锛屽ぇ浜庣瓑浜� 768px锛� */
+@media (min-width: 768px)  and (max-width: 992px) {
+.sxmt20
+{
+   margin-top:40px;
+}
+.mtzh25
+{
+	margin-top:30px;
+}
+
+	
+}
+
+/* 涓瓑灞忓箷锛堟闈㈡樉绀哄櫒锛屽ぇ浜庣瓑浜� 992px锛� */
+@media (min-width: 992px)  and (max-width: 1200px){
+}
+
+/* 澶у睆骞曪紙澶ф闈㈡樉绀哄櫒锛屽ぇ浜庣瓑浜� 1200px锛� */
+@media (min-width: 1200px) {
+.infofont
+{
+	height:160px; border-bottom:1px solid #ddd; text-align:left;
+}
+.infofont h2
+{
+	font-size:18px; line-height:30px; margin-left:10px; height:25px;
+}
+.infofont h2 span
+{
+	font-size:30px;  
+}
+.infofont h2 span i
+{
+	width:30px; height:30px; display:block; display:inline-block; margin:10px 10px 0px 0px;
+}
+.ihuanz
+{
+	color:#f9bf44;
+}
+.ilanz
+{
+	color:#0067b4;
+}
+.iheiz
+{
+	color:#000000;
+}
+.ihuanz i
+{
+	background:url(../Images/ibg.png) -30px -60px no-repeat;
+
+}
+.ilanz i
+{
+	background:url(../Images/ibg.png) -60px -60px no-repeat;
+
+}
+
+.iheiz i
+{
+	background:url(../Images/ibg.png) -90px -60px no-repeat;
+
+}
+
+
+}

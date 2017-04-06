@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+        ">
+	<mvc:annotation-driven>
+		<!-- 消息转换器 -->
+		<mvc:message-converters register-defaults="true">
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes" value="text/html;charset=UTF-8" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+
+	<!-- 配置静态资源访问 -->
+	<mvc:resources mapping="/**" location="/" />
+	<mvc:default-servlet-handler />
+	<!-- 扫描注解配置的包 -->
+	<context:component-scan base-package="com.cg.*" />
+
+	<!-- 进行aop设置 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+	<!-- 默认的注解映射的支持 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<!-- 配置视图层 使用jstl标签 -->
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<!-- 定义视图前缀格式 -->
+		<property name="prefix" value="/WEB-INF/views/" />
+		<!-- 定义视图后缀格式 -->
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
+	<bean id="mappingJacksonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>application/json;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- spring MVC json 配置 2013-10-30 -->
+	<!--配置拦截器, 多个拦截器,顺序执行 -->
+ 	<mvc:interceptors>
+		<!-- <mvc:interceptor>
+			匹配的是url路径， 如果不配置或/**,将拦截所有的Controller
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/manager/notice/**" />
+			<bean class="com.cg.core.interceptor.XSSInterceptor"></bean>
+		</mvc:interceptor> -->
+
+		<mvc:interceptor>
+			<!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->
+			<mvc:mapping path="/control/**" />
+			<mvc:exclude-mapping path="/control/activity/**" />
+			<mvc:exclude-mapping path="/control/news/**" />
+			<!-- <mvc:exclude-mapping path="/login/**" />
+			<mvc:exclude-mapping path="/loginOfAdmin/**" />
+			<mvc:exclude-mapping path="/pc/**" />
+			
+			<mvc:exclude-mapping path="/css/**" />
+			<mvc:exclude-mapping path="/images/**" />
+			<mvc:exclude-mapping path="/image/**" />
+			<mvc:exclude-mapping path="/js/**" />
+			<mvc:exclude-mapping path="/oa/**" />
+			<mvc:exclude-mapping path="/show/**" /> -->
+			<bean class="com.cg.core.interceptor.ManageLoginInterceptor"></bean>
+		</mvc:interceptor>
+
+		<!-- <mvc:interceptor>
+			匹配的是url路径， 如果不配置或/**,将拦截所有的Controller
+			<mvc:mapping path="/manager/**" />
+			<mvc:exclude-mapping path="/manager/main/**" />
+			<mvc:exclude-mapping path="/manager/goto/**" />
+			
+			<bean class="com.cg.core.interceptor.ManageAdminInterceptor"></bean>
+		</mvc:interceptor> -->
+
+		<!-- 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 -->
+	</mvc:interceptors> 
+
+
+	<!-- 上传文件拦截，设置最大上传文件大小 2M-->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="4194304" />
+	</bean>
+
+</beans>

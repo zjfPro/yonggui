@@ -1,0 +1,126 @@
+﻿.bgf2f2f2
+{
+	background:#f2f2f2;
+}
+.bbtm1px
+{
+	border-bottom:1px solid #e1e1e1;
+}
+.dtbt
+{
+	height:60px; line-height:60px; margin:0px; padding:0px;
+}
+.fyhead
+{
+	height:120px; padding:0px; background:#ffffff; margin-bottom:15px;
+}
+.fyhead div h2
+{
+	margin:0px; padding:0px; line-height:120px;
+}
+.newscontent
+{
+	width:95%; margin:0px auto;
+}
+.newscontent p
+{
+	line-height:30px; text-indent:2em; font-size:16px;
+	
+}
+.pdbtm15px
+{
+	padding-bottom:15px;
+}
+.w200
+{
+	width:190px;
+}
+.zhye h3
+{
+	margin:0px; line-height:38px; margin-left:10px; 
+}
+.zhye h3 small
+{
+	font-size:18px; font-weight:600;
+}
+.dtlist
+{
+	 font-size:16px; 
+}
+.dtlist li
+{
+	 margin-left:25px;line-height:40px; border-bottom:1px dashed #ddd;
+}
+.dtlist li a
+{
+	color:#333333;
+}
+.dtlist li a:hover
+{
+	color:#FF0000;
+}
+.dtlist li span
+{
+	float:right;
+}
+.cwbg
+{
+	background:url(../img/cwbg.jpg) no-repeat center; width:100%;
+}
+/* 瓒呭皬灞忓箷锛堝皬浜� 768px锛� */
+@media (max-width: 768px) {
+	
+	.nav-tabs > li.active > a
+		{
+			border:0px; border-color:transparent; background-color:#428bca;color:white;
+			border-top-left-radius: 4px;
+            border-top-right-radius:4px;
+			border-bottom-left-radius: 4px;
+            border-bottom-right-radius:4px; padding:8px;
+		}
+	.nav-tabs > li.active > a:hover
+		{
+			background-color:#428bca;
+			color:white;
+			border:0px;
+			
+}
+	.nav-tabs > li > a:hover
+		{
+			border:-1px; border-color:transparent; background-color:#eee;color:#2a6496;
+			border-top-left-radius: 4px;
+            border-top-right-radius:4px;
+			border-bottom-left-radius: 4px;
+            border-bottom-right-radius:4px;
+			
+		}
+}
+
+/* 灏忓睆骞曪紙骞虫澘锛屽ぇ浜庣瓑浜� 768px锛� */
+@media (min-width: 768px) and (max-width: 993px) {
+		
+	.nav-tabs > li.active > a
+		{
+			border:0px; border-color:transparent; background-color:#428bca;color:white;
+			border-top-left-radius: 4px;
+            border-top-right-radius:4px;
+			border-bottom-left-radius: 4px;
+            border-bottom-right-radius:4px;
+		}
+	.nav-tabs > li.active > a:hover
+		{
+			background-color:#428bca;
+			color:white;
+			border:0px;
+			
+}
+	.nav-tabs > li > a:hover
+		{
+			border:-1px; border-color:transparent; background-color:#eee;color:#2a6496;
+			border-top-left-radius: 4px;
+            border-top-right-radius:4px;
+			border-bottom-left-radius: 4px;
+            border-bottom-right-radius:4px;
+			
+		}
+}

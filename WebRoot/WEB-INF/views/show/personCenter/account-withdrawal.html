@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>个人中心-财务管理-提现</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/jquery-1.8.0.min.js"></script>
+</head>
+
+<body>
+
+<div class="head-box">
+  <div class="w1200 clearfix">
+    <a class="head-logo" href="index.html"><img src="images/head_logo.png"></a>
+    <div class="nav-box">
+      <ul>
+        <li><a href="about-us.html">关于邕桂</a></li>
+        <li><a href="activity-list.html">公司活动</a></li>
+        <li><a href="new-list.html">新闻资讯</a></li>
+        <li><a href="product-center.html">产品中心</a></li>
+        <li class="curr"><a href="index.html">首页</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--head-box end-->
+
+
+<div class="user-box">
+  <div class="u-head w1200">
+    <a href="#">首页</a><span>></span><span>财务管理</span>
+  </div>
+  <div class="user-wrap w1200 clearfix">
+    <div class="user-sidebar-box">
+      <div class="user-sidebar clearfix">
+        <ul>
+          <li><a href="user-index.html">订单管理</a></li>
+          <li class="on"><a href="financial-management.html">财务管理</a></li>
+          <li><a href="vehicle-information.html">车辆信息</a></li>
+          <li><a href="vehicle-use.html">车辆使用</a></li>
+          <li><a href="vehicle-maintenance.html">车辆保养</a></li>
+          <li><a href="vehicle-insurance.html">车辆保险</a></li>
+          <li><a href="personal-information.html">个人信息</a></li>
+        </ul>
+      </div>
+    </div>
+    <!--user-sidebar-box end-->
+    <div class="user-main">
+      <div class="withdrawal-box">
+        <ul>
+
+          <li>可提现金额：<span class="money">￥<em id="maxMoney">892.10</em></span></li>
+          <li>
+            <label>提现金额：</label>
+            <input class="wit-text" id="witMoney" type="text">
+            <span class="hint" id="hintMoney"></span>
+          </li>
+          <li>
+            <label>提现方式：</label>
+            <input type="hidden" id="wayNumber" value="0">
+            <select class="wit-select" id="witWay">
+              <option this_val="0">请选择</option>
+              <option this_val="1">银行卡</option>
+              <option this_val="2">支付宝</option>
+              <option this_val="3">微信</option>
+            </select>
+            <span class="hint" id="hintWay"></span>
+          </li>
+          <div class="witWayBox" id="witWayBox">
+            <ul>
+              <li>
+                <label>开户姓名：</label>
+                <input class="wit-text" id="userName" type="text">
+                <span class="hint" id="hintName"></span>
+              </li>
+              <li>
+                <label>开户行：</label>
+                <input class="wit-text" id="userBank" type="text">
+                <span class="hint" id="hintBank"></span>
+              </li>
+              <li>
+                <label>卡号：</label>
+                <input class="wit-text" id="bankAccount" type="text">
+                <span class="hint" id="hBankAccount"></span>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <label>支付宝账号：</label>
+                <input class="wit-text" id="aliAccount" type="text">
+                <span class="hint" id="hAliAccount"></span>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <label>微信号：</label>
+                <input class="wit-text" id="wxAccount" type="text">
+                <span class="hint" id="hWXAccount"></span>
+              </li>
+            </ul>
+          </div>
+		  <li>
+            <label>&nbsp;</label>
+            <input class="withdrawalBtn" id="withdrawalBtn" type="button" value="立即提现">
+          </li>
+        </ul>
+      </div>
+      
+      
+    </div>
+    <!--user-main end-->
+  
+  </div>
+</div>
+
+
+<div class="footer-box">
+  <div class="w1200">
+    <div class="qr-codebox">
+      <div class="cr-code"><img src="images/footer_qr_code.jpg"></div>
+    </div>
+    <div class="footer">
+      <div class="firend-link">
+        <a href="#">首页</a>
+        <a href="#">公司介绍</a>
+        <a href="#">产品中心</a>
+        <a href="#">公司活动</a>
+        <a href="#">客户反馈</a>
+        <a href="#">关于邕桂</a>
+      </div>
+      <div class="subfooter">
+        <p>
+          <span>联系电话：(0771)2867380</span>
+          <span>邮箱：123456789@qq.com</span>
+          <span>地址：广西首府南宁民族大道12号丽原·天际A座32楼A3207</span>
+        </p>
+        <p>
+          <span>广西邕桂汽车服务有限公司</span>
+          <span>蜀ICP备14022404号</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</div>   
+  
+<script>
+$(function(){
+	$("#withdrawalBtn").click(function(){
+		withdrawalVerify();
+	})
+	
+	$("#witWay").click(function(){
+		var wayNumber=$("#wayNumber");
+		var hintWay=$("#hintWay");
+		var witWayBox=$("#witWayBox");
+		var checked = $("#witWay option:checked").attr("this_val");
+		wayNumber.val(checked);	
+		
+		if(checked==0){
+			hintWay.html("请选择支付方式");
+			witWayBox.find("ul").hide();
+			return;
+		}
+		hintWay.html("");
+		if(checked==1){//--银行卡
+			witWayBox.find("ul").eq(0).show().siblings("ul").hide();
+			return;
+		}
+		if(checked==2){//--支付宝
+			witWayBox.find("ul").eq(1).show().siblings("ul").hide();
+			return;
+		}
+		if(checked==3){//--微信
+			witWayBox.find("ul").eq(2).show().siblings("ul").hide();
+			return;
+		}
+	})
+})
+function withdrawalVerify(){
+	var wayNumber=$("#wayNumber");
+	var maxMoney=$("#maxMoney").text();
+	var witMoney=$("#witMoney");
+	var witWay=$("#witWay");
+	
+	var hintMoney=$("#hintMoney");
+	var hintWay=$("#hintWay");
+	var wayNumber=$("#wayNumber");
+	var hintWay=$("#hintWay");
+	
+	if(witMoney.val()==null ||witMoney.val()==""){
+		witMoney.focus();
+		hintMoney.html("请输入提现金额");
+		return;
+	}
+	hintMoney.html("");
+	if(isNaN(witMoney.val()) ||witMoney.val()<=0){
+		witMoney.focus();
+		hintMoney.html("提现金额格式有误，请输入大于0的提现金额");
+		return;
+	}
+	hintMoney.html("");
+	if(witMoney.val()>parseFloat(maxMoney)){
+		witMoney.focus();
+		hintMoney.html("您的账户余额不足");
+		return;
+	}
+	hintMoney.html("");
+	
+	if(wayNumber==0){
+		hintWay.html("请选择支付方式");
+		return;
+	}
+	
+	
+	
+	if(wayNumber.val()==1){//--银行卡 
+	console.log(121)
+		var userName=$("#userName");
+		var userBank=$("#userBank");
+		var bankAccount=$("#bankAccount");
+		var hintName=$("#hintName");
+		var hintBank=$("#hintBank");
+		var hBankAccount=$("#hBankAccount");
+	
+		if(userName.val()==null || userName.val()==""){
+			userName.focus();
+			hintName.html("请输入开户姓名");
+			return;
+		}
+		hintName.html("");
+		if(userBank.val()==null || userBank.val()==""){
+			userBank.focus();
+			hintBank.html("请输入开户行");
+			return;
+		}
+		hintBank.html("");
+		if(bankAccount.val()==null || bankAccount.val()==""){
+			bankAccount.focus();
+			hBankAccount.html("请输入卡号");
+			return;
+		}
+		hBankAccount.html("请输入卡号");
+		if(!(/(^\d{16})|(^\d{17})|(^\d{19})$/).test(bankAccount.val())){
+			bankAccount.focus();
+			hBankAccount.html("卡号格式有误，请重新输入");
+			return;
+		}
+		hBankAccount.html("");
+		
+	}
+	if(wayNumber.val()==2){//--支付宝
+		var aliAccount=$("#aliAccount");
+		var hAliAccount=$("#hAliAccount");
+		if(aliAccount.val()==null ||aliAccount.val()==""){
+			aliAccount.focus();
+			hAliAccount.html("请输入支付宝账户");
+			return;
+		}
+		hAliAccount.html("");
+	}
+	if(wayNumber.val()==3){//--微信
+		var wxAccount=$("#wxAccount");
+		var hWXAccount=$("#hWXAccount");
+		if(wxAccount.val()==null ||wxAccount.val()==""){
+			wxAccount.focus();
+			hWXAccount.html("请输入微信号");
+			return;
+		}
+		hWXAccount.html("");
+	}
+	
+}
+</script>
+
+</body>
+</html>
